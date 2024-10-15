@@ -16,8 +16,13 @@ public class Map extends JPanel{
 
     //MovingRedObject player = new MovingRedObject();
 
+    
+    MovingRedObject player = new MovingRedObject();
+    player.setBackground(Color.RED);
+    player.setPreferredSize(new Dimension(20, 40));  // dimensiuni obiect
+    player.setBounds(x, y, 20, 40);  // pozitia obiectului
 
-
+    this.add(player);
 
     public Map(){ //constructor
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
