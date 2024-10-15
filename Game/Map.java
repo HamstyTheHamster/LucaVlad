@@ -14,10 +14,14 @@ public class Map extends JPanel{
 
 
 
+    //MovingRedObject player = new MovingRedObject();
+
+
 
 
     public Map(){ //constructor
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
+}
 }
