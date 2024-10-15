@@ -1,7 +1,7 @@
 //executable
 
 
-package MyPackage;
+package Game;
 
 import javax.swing.SwingUtilities;
 
@@ -10,7 +10,7 @@ public class Launcher {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                MainWindow main = new MainWindow();
+                MainFrame main = new MainFrame();
                 main.show();
             }
         });
