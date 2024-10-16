@@ -14,10 +14,17 @@ public class MovingRedObject extends JPanel implements KeyListener {
     private int y = 50;        // Poziția initială 
 
 
-    public MovingRedObject(){
-
-
+    public MovingRedObject() {
+        this.setBackground(Color.RED);
+        this.setPreferredSize(new Dimension(20, 20));  // dimensiuni obiect
+        this.setBounds(x, y, 20, 20);  // pozitia obiectului
+        
+        this.setFocusable(true);
+        this.addKeyListener(this);
     }
+
+
+    
 
     /*public MovingRedObjectExample(int width, int height) {
         setTitle("Red Object Moving with WASD");
@@ -47,7 +54,7 @@ public class MovingRedObject extends JPanel implements KeyListener {
         setVisible(true);
         setLocationRelativeTo(null);
     }
-*/
+    */
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
@@ -74,7 +81,7 @@ public class MovingRedObject extends JPanel implements KeyListener {
         if (y > 576 - this.getHeight()) 
             y = 576 - this.getHeight();
 
-        this.setBounds(x, y, 20, 40); // pozitia noua
+        this.setBounds(x, y, 20, 20); // pozitia noua
     }
 
     @Override
