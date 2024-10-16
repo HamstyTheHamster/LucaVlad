@@ -14,14 +14,14 @@ public class Map extends JPanel {
     MovingRedObject player;
 
     public Map() { // constructor
-        // Initialize the player object (assuming MovingRedObject has a constructor)
-        player = new MovingRedObject();
+        
+        player = new MovingRedObject();         //gaoaza rosu apare in mij sus ca e layoutu center
 
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
-
+        this.setLayout(null);
         // Add player to the panel
         this.add(player);
     }

@@ -16,8 +16,11 @@ public class MovingRedObject extends JPanel implements KeyListener {
 
     public MovingRedObject() {
         this.setBackground(Color.RED);
-        this.setPreferredSize(new Dimension(20, 40));  // dimensiuni obiect
-        this.setBounds(x, y, 20, 40);  // pozitia obiectului
+        this.setPreferredSize(new Dimension(20, 20));  // dimensiuni obiect
+        this.setBounds(x, y, 20, 20);  // pozitia obiectului
+        
+        this.setFocusable(true);
+        this.addKeyListener(this);
     }
 
 
@@ -78,7 +81,7 @@ public class MovingRedObject extends JPanel implements KeyListener {
         if (y > 576 - this.getHeight()) 
             y = 576 - this.getHeight();
 
-        this.setBounds(x, y, 20, 40); // pozitia noua
+        this.setBounds(x, y, 20, 20); // pozitia noua
     }
 
     @Override
