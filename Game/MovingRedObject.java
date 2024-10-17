@@ -10,19 +10,26 @@ public class MovingRedObject extends JPanel implements KeyListener {
 
     //private JPanel bluePanel;  // panel saptiu
     //private JPanel redObject;  // panel obiect
-    private int x = 50;        // pozitie initiala
-    private int y = 50;        // Poziția initială 
+    private int x = 376;        // pozitie initiala
+    private int y = 544;        // Poziția initială 
 
 
     public MovingRedObject() {
         this.setBackground(Color.RED);
-        this.setPreferredSize(new Dimension(20, 20));  // dimensiuni obiect
-        this.setBounds(x, y, 20, 20);  // pozitia obiectului
+        this.setPreferredSize(new Dimension(16, 16));  // dimensiuni obiect
+        this.setBounds(x, y, 16, 16);  // pozitia obiectului
         
         this.setFocusable(true);
         this.addKeyListener(this);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 
     
 
@@ -57,31 +64,40 @@ public class MovingRedObject extends JPanel implements KeyListener {
     */
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
+        switch (e.getKeyCode()) {   //player movement and shooting
+            /*
             case KeyEvent.VK_W:
                 y -= 10;  // sus
                 break;
             case KeyEvent.VK_S:
                 y += 10;  // jos
                 break;
+            */
             case KeyEvent.VK_A:
                 x -= 10;  // stanga
                 break;
             case KeyEvent.VK_D:
                 x += 10;  // dreapta
                 break;
+            case KeyEvent.VK_SPACE:
+                //shooting
+                break;
         }
 
-        if (x < 0) 
+        if (x < 0){ 
             x = 0;
-        if (y < 0)
+        }
+        if (y < 0){
             y = 0;
-        if (x > 768 - this.getWidth())
+        }
+        if (x > 768 - this.getWidth()){
             x = 768 - this.getWidth();
-        if (y > 576 - this.getHeight()) 
+        }
+        if (y > 576 - this.getHeight()) {
             y = 576 - this.getHeight();
+        }
 
-        this.setBounds(x, y, 20, 20); // pozitia noua
+        this.setBounds(x, y, 16, 16); // pozitia noua
     }
 
     @Override
