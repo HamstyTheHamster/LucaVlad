@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
 
-public class MovingRedObject extends JPanel implements KeyListener {
+public class Player extends JPanel implements KeyListener {
 
     //private JPanel bluePanel;  // panel saptiu
     //private JPanel redObject;  // panel obiect
@@ -16,7 +16,7 @@ public class MovingRedObject extends JPanel implements KeyListener {
     private int screenHeight;
     private int  tileSize;
 
-    public MovingRedObject(int a, int b, int c) {
+    public Player(int a, int b, int c) {
         screenWidth = a;
         screenHeight = b;
         tileSize = c;
@@ -85,12 +85,13 @@ public class MovingRedObject extends JPanel implements KeyListener {
             case KeyEvent.VK_D:
                 x += 10;  // dreapta
                 break;
-            case KeyEvent.VK_SPACE:
+                /*case KeyEvent.VK_SPACE:
                 //shooting
                 break;
+                */
         }
 
-        if (x < 0){ 
+        if (x < 0) { 
             x = 0;
         }
         if (y < 0){

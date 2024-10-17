@@ -11,12 +11,12 @@ public class Map extends JPanel {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol; //768px
     final int screenHeight = tileSize * maxScreenRow; //576px
-    MovingRedObject player;
-
+    Player player;
+    Shoot shoot;
     public Map() { // constructor
         
-        player = new MovingRedObject(screenWidth, screenHeight, tileSize);         //create player
-
+        player = new Player(screenWidth, screenHeight, tileSize);         //create player
+        shoot = new Shoot();
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -24,6 +24,8 @@ public class Map extends JPanel {
         this.setLayout(null);
         // Add player to the panel
         this.add(player);
+        this.addKeyListener(shoot);
+        
     }
 
 }
