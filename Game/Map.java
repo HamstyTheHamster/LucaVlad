@@ -15,7 +15,7 @@ public class Map extends JPanel {
 
     public Map() { // constructor
         
-        player = new MovingRedObject();         //gaoaza rosu apare in mij sus ca e layoutu center
+        player = new MovingRedObject(screenWidth, screenHeight, tileSize);         //create player
 
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -25,4 +25,5 @@ public class Map extends JPanel {
         // Add player to the panel
         this.add(player);
     }
+
 }

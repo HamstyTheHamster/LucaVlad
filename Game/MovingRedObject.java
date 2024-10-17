@@ -10,15 +10,21 @@ public class MovingRedObject extends JPanel implements KeyListener {
 
     //private JPanel bluePanel;  // panel saptiu
     //private JPanel redObject;  // panel obiect
-    private int x = 376;        // pozitie initiala
-    private int y = 544;        // Poziția initială 
+    private int x;        // pozitie initiala
+    private int y;       // Poziția initială 
+    private int screenWidth;
+    private int screenHeight;
+    private int  tileSize;
 
-
-    public MovingRedObject() {
+    public MovingRedObject(int a, int b, int c) {
+        screenWidth = a;
+        screenHeight = b;
+        tileSize = c;
+        x = screenWidth / 2 - tileSize / 2;
+        y = screenHeight - 2 * tileSize;
         this.setBackground(Color.RED);
-        this.setPreferredSize(new Dimension(16, 16));  // dimensiuni obiect
-        this.setBounds(x, y, 16, 16);  // pozitia obiectului
-        
+        this.setPreferredSize(new Dimension(tileSize, tileSize));  // dimensiuni obiect
+        this.setBounds(x, y, tileSize, tileSize);  // pozitia obiectului
         this.setFocusable(true);
         this.addKeyListener(this);
     }
@@ -90,14 +96,14 @@ public class MovingRedObject extends JPanel implements KeyListener {
         if (y < 0){
             y = 0;
         }
-        if (x > 768 - this.getWidth()){
-            x = 768 - this.getWidth();
+        if (x > screenWidth - this.getWidth()){
+            x = screenWidth - this.getWidth();
         }
-        if (y > 576 - this.getHeight()) {
-            y = 576 - this.getHeight();
+        if (y > screenHeight - this.getHeight()) {
+            y = screenHeight - this.getHeight();
         }
 
-        this.setBounds(x, y, 16, 16); // pozitia noua
+        this.setBounds(x, y, tileSize, tileSize); // pozitia noua
     }
 
     @Override
