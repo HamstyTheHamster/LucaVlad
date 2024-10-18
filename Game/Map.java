@@ -16,7 +16,7 @@ public class Map extends JPanel {
     public Map() { // constructor
         
         player = new Player(screenWidth, screenHeight, tileSize);         //create player
-        shoot = new Shoot();
+        shoot = new Shoot(this);
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -25,7 +25,23 @@ public class Map extends JPanel {
         // Add player to the panel
         this.add(player);
         this.addKeyListener(shoot);
+
+        
+
+        
         
     }
 
+    /*public void addBullet(Entity bullet){
+        this.add(bullet);
+    }
+        */
+
 }
+
+/*class Test {
+    Test(Map p) {
+
+    }
+}
+    */

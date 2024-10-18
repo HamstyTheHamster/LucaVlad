@@ -4,15 +4,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Shoot implements KeyListener{
+Map map;
 
-    public Shoot() {
+    public Shoot(Map a) {
+        map = a;
     }
 
 
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            System.out.println("test");
+            map.addBullet();
         }
     }
 
