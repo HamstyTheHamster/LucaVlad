@@ -7,22 +7,20 @@ import javax.swing.*;
 class Entity {
     int x;
     int y;
-    int size; // diameter in pixels
-    int step = 5; // displacement at time step (~speed)
+    int step; // displacement at time step (~speed)
+    Timer timer;
     
-    public Entity() {
-        size = 30;
-    }
-    
-    public Entity( int startx, int starty ) {
+    public Entity(int startx, int starty, int stepSize) {
         x = startx;
         y = starty;
+        step = stepSize;
         size = 30;
     }
     
-    public void step() {
+    /*public void step() {
         y += step;
     }
+        */
 
     void draw(Graphics g) {
         g.setColor(Color.blue);

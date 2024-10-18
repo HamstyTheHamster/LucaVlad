@@ -14,7 +14,7 @@ Map map;
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            map.addBullet();
+            //map.addBullet();
         }
     }
 

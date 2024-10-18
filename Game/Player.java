@@ -38,47 +38,17 @@ public class Player extends JPanel implements KeyListener {
     }
 
     
-
-    /*public MovingRedObjectExample(int width, int height) {
-        setTitle("Red Object Moving with WASD");
-        setSize(width, height);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setLayout(null);  
-
-        // panelul albastru
-        bluePanel = new JPanel();
-        bluePanel.setBackground(Color.BLUE);
-        bluePanel.setBounds(0, 0, width, height);  // dimensiuni panel
-        bluePanel.setLayout(null); 
-
-        // obiectul roșu
-        redObject = new JPanel();
-        redObject.setBackground(Color.RED);
-        redObject.setPreferredSize(new Dimension(20, 40));  // dimensiuni obiect
-        redObject.setBounds(x, y, 20, 40);  // pozitia obiectului
-
-        bluePanel.add(redObject);
-
-        add(bluePanel); 
-
-        addKeyListener(this);
-        setFocusable(true);  
-
-        setVisible(true);
-        setLocationRelativeTo(null);
-    }
-    */
     @Override
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {   //player movement and shooting
-            /*
+            
             case KeyEvent.VK_W:
                 y -= 10;  // sus
                 break;
             case KeyEvent.VK_S:
                 y += 10;  // jos
                 break;
-            */
+            
             case KeyEvent.VK_A:
                 x -= 10;  // stanga
                 break;
@@ -94,8 +64,8 @@ public class Player extends JPanel implements KeyListener {
         if (x < 0) { 
             x = 0;
         }
-        if (y < 0){
-            y = 0;
+        if (y < screenHeight - 3 * tileSize){
+            y = screenHeight - 3 * tileSize;
         }
         if (x > screenWidth - this.getWidth()){
             x = screenWidth - this.getWidth();
