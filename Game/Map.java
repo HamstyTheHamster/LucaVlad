@@ -1,8 +1,8 @@
 package Game;
 
 import java.awt.*;
-
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Map extends JPanel {
     final int originalTileSize = 16;
@@ -19,7 +19,8 @@ public class Map extends JPanel {
     Wall wall2;
     Wall wall3;
     Image img;
-    Timer timer;
+    Tick tick; //what happens every tick
+    ArrayList<Entity> entities;
 
     public Map() { // constructor
         
@@ -29,8 +30,7 @@ public class Map extends JPanel {
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.jpg")).getImage();
-        timer = new Timer(17, null);
-    
+        tick = new Tick(this, entities);
 
 
 

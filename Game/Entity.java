@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class Entity extends JPanel implements ActionListener{
+class Entity extends JPanel{
     int x;
     int y;
     int step; // displacement at time step (~speed)
@@ -26,10 +26,11 @@ class Entity extends JPanel implements ActionListener{
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
 
-    @Override
+    /*@Override
     public void actionPerformed(ActionEvent e) { //when event step
         this.step();
     }
+        */
 
     public void step() { //how to step
         y = y + step;
