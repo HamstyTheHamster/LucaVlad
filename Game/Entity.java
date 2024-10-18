@@ -8,7 +8,6 @@ class Entity extends JPanel implements ActionListener{
     int x;
     int y;
     int step; // displacement at time step (~speed)
-    Timer timer;
     Image img;
     int tSize;
     
@@ -17,7 +16,8 @@ class Entity extends JPanel implements ActionListener{
         y = starty;
         tSize = tileSize;
         step = stepSize;
-        img = new ImageIcon(getClass().getResource(poza)).getImage();
+        img = new ImageIcon(getClass().getResource("Bullet.png")).getImage();
+        
     }
     
     @Override
