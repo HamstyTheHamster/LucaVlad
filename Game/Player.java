@@ -13,11 +13,13 @@ public class Player extends JPanel implements KeyListener {
     private int screenWidth;
     private int screenHeight;
     private int  tileSize;
+    private Map map;
 
-    public Player(int a, int b, int c) {
+    public Player(int a, int b, int c, Map m) {
         screenWidth = a;
         screenHeight = b;
         tileSize = c;
+        map = m;
         x = screenWidth / 2 - tileSize / 2;
         y = screenHeight - 2 * tileSize;
         this.setBackground(Color.RED);
@@ -53,10 +55,10 @@ public class Player extends JPanel implements KeyListener {
             case KeyEvent.VK_D:
                 x += 10;  // dreapta
                 break;
-                /*case KeyEvent.VK_SPACE:
+                case KeyEvent.VK_SPACE:
                 //shooting
+                map.addBullet();
                 break;
-                */
         }
 
         if (x < 0) { 

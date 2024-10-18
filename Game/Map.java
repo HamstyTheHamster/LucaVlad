@@ -14,7 +14,7 @@ public class Map extends JPanel {
     final int screenHeight = tileSize * maxScreenRow; //576px
 
     Player player;
-    Shoot shoot;
+    //Shoot shoot;
     Wall wall1;
     Wall wall2;
     Wall wall3;
@@ -22,8 +22,8 @@ public class Map extends JPanel {
 
     public Map() { // constructor
         
-        player = new Player(screenWidth, screenHeight, tileSize);         //create player
-        shoot = new Shoot(this);
+        player = new Player(screenWidth, screenHeight, tileSize, this);         //create player
+        //shoot = new Shoot(this);
         wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
@@ -46,13 +46,14 @@ public class Map extends JPanel {
         this.add(wall2);
         this.add(wall3);
         this.add(player);
-        this.addKeyListener(shoot);
+        this.addKeyListener(player);
         
     }
 
     public void addBullet(){
-        //Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
-        //this.add(bullet);
+        Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
+        this.add(bullet);
+        System.out.println("shooting");
     }
     
     
@@ -65,10 +66,3 @@ public class Map extends JPanel {
 
 
 }
-
-/*class Test {
-    Test(Map p) {
-
-    }
-}
-    */
