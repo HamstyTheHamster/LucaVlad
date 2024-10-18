@@ -1,7 +1,6 @@
 package Game;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 class Entity extends JPanel{
@@ -26,14 +25,20 @@ class Entity extends JPanel{
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
 
+
+
+    public void step() { //how to step
+        y = y + step;
+    }
+
+
+
     /*@Override
     public void actionPerformed(ActionEvent e) { //when event step
         this.step();
     }
         */
 
-    public void step() { //how to step
-        y = y + step;
-    }
+    
 
 }

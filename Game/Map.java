@@ -1,8 +1,9 @@
 package Game;
 
 import java.awt.*;
-import javax.swing.*;
 import java.util.ArrayList;
+import javax.swing.*;
+
 
 public class Map extends JPanel {
     final int originalTileSize = 16;
@@ -31,6 +32,7 @@ public class Map extends JPanel {
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.jpg")).getImage();
         tick = new Tick(this, entities);
+        entities = new ArrayList<Entity>();
 
 
 
@@ -60,15 +62,21 @@ public class Map extends JPanel {
         Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
         this.add(bullet);
         System.out.println("shooting");
+        entities.add(bullet);
     }
-    
+
+
+    public void addZombie() {
+        Bullet zombie = new Zombie(player.getX(), player.getY(), tileSize);
+        this.add(zombie);
+        System.out.println("zombie");
+        entities.add(zombie);
+    }
     
     @Override
         protected void paintComponent(Graphics g) {
-            super.paintComponent(g);  
-            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        super.paintComponent(g);  
+        g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
-
-
 
 }
