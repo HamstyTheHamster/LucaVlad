@@ -1,6 +1,8 @@
 package Game;
 
 import java.awt.*;
+
+import javax.swing.*;
 import javax.swing.JPanel;
 
 public class Map extends JPanel {
@@ -16,6 +18,7 @@ public class Map extends JPanel {
     Wall wall1;
     Wall wall2;
     Wall wall3;
+    Image img;
     public Map() { // constructor
         
         player = new Player(screenWidth, screenHeight, tileSize);         //create player
@@ -23,6 +26,7 @@ public class Map extends JPanel {
         wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
+        img = new ImageIcon(getClass().getResource("Map.jpg")).getImage();
 
 
 
@@ -44,6 +48,14 @@ public class Map extends JPanel {
         this.add(bullet);
     }
         */
+    
+    @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);  
+            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+    }
+
+
 
 }
 

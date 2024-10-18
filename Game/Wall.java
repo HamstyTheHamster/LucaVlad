@@ -26,7 +26,7 @@ public class Wall extends JPanel{
         // 24 x 384
         this.setBounds(x, y, screenWidth / 32, screenHeight - 4 * tileSize);  // pozitia obiectului
     }
-
+    @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);  
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);

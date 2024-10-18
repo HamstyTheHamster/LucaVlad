@@ -1,10 +1,12 @@
 package Game;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Shoot implements KeyListener{
-Map map;
+
+    Map map;
 
     public Shoot(Map a) {
         map = a;
@@ -15,6 +17,7 @@ Map map;
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
             //map.addBullet();
+            map.setBackground(Color.WHITE);
         }
     }
 
