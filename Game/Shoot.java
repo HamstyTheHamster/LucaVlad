@@ -16,8 +16,7 @@ public class Shoot implements KeyListener{
     @Override
     public void keyTyped(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_SPACE) {
-            //map.addBullet();
-            map.setBackground(Color.WHITE);
+            map.addBullet();
         }
     }
 

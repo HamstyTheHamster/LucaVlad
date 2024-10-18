@@ -3,7 +3,6 @@ package Game;
 import java.awt.*;
 
 import javax.swing.*;
-import javax.swing.JPanel;
 
 public class Map extends JPanel {
     final int originalTileSize = 16;
@@ -13,12 +12,14 @@ public class Map extends JPanel {
     final int maxScreenRow = 12;
     final int screenWidth = tileSize * maxScreenCol; //768px
     final int screenHeight = tileSize * maxScreenRow; //576px
+
     Player player;
     Shoot shoot;
     Wall wall1;
     Wall wall2;
     Wall wall3;
     Image img;
+
     public Map() { // constructor
         
         player = new Player(screenWidth, screenHeight, tileSize);         //create player
@@ -35,7 +36,11 @@ public class Map extends JPanel {
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.setLayout(null);
-        // Add player to the panel
+        
+        this.setFocusable(true);
+        this.requestFocusInWindow();
+        
+        // Add elements to the panel
         this.add(wall1);
         this.add(wall2);
         this.add(wall3);
@@ -44,10 +49,10 @@ public class Map extends JPanel {
         
     }
 
-    /*public void addBullet(Entity bullet){
+    public void addBullet(Entity bullet){
         this.add(bullet);
     }
-        */
+    
     
     @Override
         protected void paintComponent(Graphics g) {
