@@ -28,6 +28,7 @@ public class Map extends JPanel {
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.jpg")).getImage();
+    
 
 
 
@@ -49,8 +50,9 @@ public class Map extends JPanel {
         
     }
 
-    public void addBullet(Entity bullet){
-        this.add(bullet);
+    public void addBullet(){
+        //Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
+        //this.add(bullet);
     }
     
     

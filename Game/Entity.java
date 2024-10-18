@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class Entity extends JPanel{
+class Entity extends JPanel implements ActionListener{
     int x;
     int y;
     int step; // displacement at time step (~speed)
@@ -12,33 +12,27 @@ class Entity extends JPanel{
     Image img;
     int tSize;
     
-    public Entity(int startx, int starty, int tileSize, int stepSize) {
+    public Entity(int startx, int starty, int tileSize, int stepSize, String poza) {
         x = startx;
         y = starty;
-        step = stepSize;
         tSize = tileSize;
-    }
-
-    public void setPic(String poza) {
+        step = stepSize;
         img = new ImageIcon(getClass().getResource(poza)).getImage();
     }
     
-    /*public void step() {
-        y += step;
+    @Override
+    protected void paintComponent(Graphics g) { //to draw pic
+        super.paintComponent(g);  
+        g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
-        */
 
-
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);  
-            g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-
-
-    /*void draw(Graphics g) {
-        g.setColor(Color.blue);
-        g.fillOval(x - size / 2, y - size / 2, size, size);
+    @Override
+    public void actionPerformed(ActionEvent e) { //when event step
+        this.step();
     }
-        */
+
+    public void step() { //how to step
+        y = y + step;
+    }
+
 }
