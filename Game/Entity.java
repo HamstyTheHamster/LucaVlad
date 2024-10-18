@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class Entity {
+class Entity extends JPanel{
     int x;
     int y;
     int step; // displacement at time step (~speed)

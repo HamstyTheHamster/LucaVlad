@@ -8,8 +8,6 @@ import javax.swing.*;
 
 public class Player extends JPanel implements KeyListener {
 
-    //private JPanel bluePanel;  // panel saptiu
-    //private JPanel redObject;  // panel obiect
     private int x;        // pozitie initiala
     private int y;       // Poziția initială 
     private int screenWidth;
@@ -86,12 +84,6 @@ public class Player extends JPanel implements KeyListener {
     public void keyTyped(KeyEvent e) {
 
     }
-
-    /*public static void main(String[] args) {
-        
-        new MovingRedObjectExample(800, 600);
-    }
-         */
 }
 
     
