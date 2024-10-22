@@ -32,5 +32,5 @@ public class Wall extends JPanel{
         super.paintComponent(g);  
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
     }
-
+    
 }

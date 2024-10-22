@@ -25,6 +25,9 @@ public class Map extends JPanel {
     Tick tick; //what happens every tick
     ArrayList<Entity> entities;
 
+    //test
+    Zombie zombie;
+
     public Map() { // constructor
         
         player = new Player(screenWidth, screenHeight, tileSize, this);         //create player
@@ -33,11 +36,9 @@ public class Map extends JPanel {
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.png")).getImage();
-        tick = new Tick(this, entities);
         entities = new ArrayList<Entity>();
-
-
-
+        tick = new Tick(this, entities);
+        
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -52,7 +53,12 @@ public class Map extends JPanel {
         this.add(wall2);
         this.add(wall3);
         this.add(player);
-        this.addKeyListener(player);        
+        this.addKeyListener(player);
+
+        //test
+        zombie = new Zombie(60, 60, tileSize);
+        this.add(zombie);
+        entities.add(zombie);
     }
 
     public void addBullet(){

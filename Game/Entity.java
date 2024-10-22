@@ -33,6 +33,7 @@ class Entity extends JPanel {
 
     public void step() { //how to step
         y = y + step;
+        this.setBounds(x, y, size, size);
     }
 
 
