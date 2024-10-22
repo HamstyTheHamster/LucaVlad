@@ -16,6 +16,10 @@ public class Tick implements ActionListener{
         timer.start();
     }
 
+    public void tickClean(){
+        timer.stop();
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Button was clicked!");

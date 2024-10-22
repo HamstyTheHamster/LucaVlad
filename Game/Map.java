@@ -74,6 +74,10 @@ public class Map extends JPanel {
     public void removeEntity(int i) {
         entities.remove(i);
     }
+
+    public void tickClean(){
+        tick.tickClean();
+    }
     
     @Override
         protected void paintComponent(Graphics g) {
