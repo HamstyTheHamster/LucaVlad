@@ -37,13 +37,27 @@ public class Tick implements ActionListener{
     }
 
 
-    private void checkCollisions(){
-        for(Bullet i : entities) {
-            
+    private void checkCollisions() {
+        for (Entity i : entities) {
+            if (i instanceof Bullet) {
+                Bullet bullet = (Bullet) i;
+                for (Entity j : entities) {
+                    if (j instanceof Zombie) {
+                        Zombie zombie = (Zombie) j;
+                        System.out.println(zombie.isCollidingWith(bullet));
+                        // if (zombie.isCollidingWith(bullet)) {
+                        //     zombie.isCollidingWith(bullet)
+                        //     entities.remove(zombie);
+                        //     entities.remove(bullet);
+                        //     // It's a good idea to break out of the loop after removing the bullet
+                        //     break;
+                        // }
+                    }
+                }
+            }
         }
-
-
     }
+    
     // private void checkCollisions() {
     //     for (int i = 0; i < player.getBullets().size(); i++) {
     //         Bullet bullet = player.getBullets().get(i);

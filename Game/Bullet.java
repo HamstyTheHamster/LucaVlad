@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Dimension;
 
 public class Bullet extends Entity{
     

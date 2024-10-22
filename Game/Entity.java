@@ -36,6 +36,13 @@ class Entity extends JPanel {
         this.setBounds(x, y, size, size);
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 
     
 
