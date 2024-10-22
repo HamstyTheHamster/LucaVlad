@@ -1,5 +1,7 @@
 package Game;
 
+//walls for the game (could have drawn into the map realised too late)
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -18,12 +20,12 @@ public class Wall extends JPanel{
         screenHeight = scH;
         tileSize = tile;
         x = posX;
-        img = new ImageIcon(getClass().getResource("Wall.png")).getImage();
         y = 0;
+        img = new ImageIcon(getClass().getResource("Wall.png")).getImage();
         
         this.setPreferredSize(new Dimension(screenWidth / 32, screenHeight - 4 * tileSize));  
         // 24 x 384
-        this.setBounds(x, y, screenWidth / 32, screenHeight - 4 * tileSize);  // pozitia obiectului
+        this.setBounds(x, y, screenWidth / 32, screenHeight - 4 * tileSize); 
     }
     @Override
     protected void paintComponent(Graphics g) {

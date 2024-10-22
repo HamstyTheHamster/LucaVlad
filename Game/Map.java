@@ -1,5 +1,7 @@
 package Game;
 
+//map on which we add all elements
+
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -30,7 +32,7 @@ public class Map extends JPanel {
         wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
-        img = new ImageIcon(getClass().getResource("Map.jpg")).getImage();
+        img = new ImageIcon(getClass().getResource("Map.png")).getImage();
         tick = new Tick(this, entities);
         entities = new ArrayList<Entity>();
 
@@ -50,10 +52,7 @@ public class Map extends JPanel {
         this.add(wall2);
         this.add(wall3);
         this.add(player);
-        this.addKeyListener(player);
-
-        this.add(new Zombie(6, 6, tileSize));
-        
+        this.addKeyListener(player);        
     }
 
     public void addBullet(){

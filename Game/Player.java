@@ -1,7 +1,11 @@
 package Game;
 
+//Player for the game
+
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
@@ -14,6 +18,7 @@ public class Player extends JPanel implements KeyListener {
     private int screenHeight;
     private int  tileSize;
     private Map map;
+    private Image img;
 
     public Player(int a, int b, int c, Map m) {
         screenWidth = a;
@@ -24,9 +29,15 @@ public class Player extends JPanel implements KeyListener {
         y = screenHeight - 2 * tileSize;
         this.setBackground(Color.RED);
         this.setPreferredSize(new Dimension(tileSize, tileSize));  // dimensiuni obiect
-        this.setBounds(x, y, tileSize, tileSize);  // pozitia obiectului
+        
         this.setFocusable(true);
         this.addKeyListener(this);
+
+        img = new ImageIcon(getClass().getResource("Player.png")).getImage();
+        
+        this.setPreferredSize(new Dimension(tileSize, tileSize));  
+        // 24 x 384
+        this.setBounds(x, y, tileSize, tileSize);  // pozitia obiectului
     }
 
     public int getX() {
@@ -37,6 +48,11 @@ public class Player extends JPanel implements KeyListener {
         return y;
     }
 
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);  
+        g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+    }
     
     @Override
     public void keyPressed(KeyEvent e) {
@@ -55,7 +71,7 @@ public class Player extends JPanel implements KeyListener {
             case KeyEvent.VK_D:
                 x += 10;  // dreapta
                 break;
-                case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_SPACE:
                 //shooting
                 map.addBullet();
                 break;

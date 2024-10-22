@@ -1,9 +1,11 @@
 package Game;
 
+//entity wich can display picture have bound and move
+
 import java.awt.*;
 import javax.swing.*;
 
-class Entity extends JPanel{
+class Entity extends JPanel {
     int x;
     int y;
     int step; // displacement at time step (~speed)
