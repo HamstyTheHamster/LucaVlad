@@ -19,7 +19,6 @@ public class MainFrame {
         window.setResizable(false);
 
         Map panel = new Map();
-        
        window.add(panel);
        window.pack();
         
