@@ -9,14 +9,16 @@ class Entity extends JPanel{
     int step; // displacement at time step (~speed)
     Image img;
     int tSize;
-    
-    public Entity(int startx, int starty, int tileSize, int stepSize, String poza) {
+    int size;
+    public Entity(int startx, int starty, int tileSize, int stepSize, String poza, int sizeL) {
         x = startx;
         y = starty;
         tSize = tileSize;
         step = stepSize;
-        img = new ImageIcon(getClass().getResource("Bullet.png")).getImage();
-        
+        size = sizeL;
+        img = new ImageIcon(getClass().getResource(poza)).getImage();
+        this.setPreferredSize(new Dimension(size, size));
+        this.setBounds(x, y, size, size);
     }
     
     @Override
@@ -31,13 +33,6 @@ class Entity extends JPanel{
         y = y + step;
     }
 
-
-
-    /*@Override
-    public void actionPerformed(ActionEvent e) { //when event step
-        this.step();
-    }
-        */
 
     
 

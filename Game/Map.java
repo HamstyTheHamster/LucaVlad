@@ -50,11 +50,9 @@ public class Map extends JPanel {
         this.add(wall2);
         this.add(wall3);
         this.add(player);
+        this.addKeyListener(player);
 
         this.add(new Zombie(6, 6, tileSize));
-
-
-        this.addKeyListener(player);
         
     }
 
@@ -66,11 +64,15 @@ public class Map extends JPanel {
     }
 
 
-    public void addZombie() {
-        Bullet zombie = new Zombie(player.getX(), player.getY(), tileSize);
+    public void addZombie(int x, int y) {
+        Zombie zombie = new Zombie(x, y, tileSize);
         this.add(zombie);
         System.out.println("zombie");
         entities.add(zombie);
+    }
+
+    public void removeEntity(int i) {
+        entities.remove(i);
     }
     
     @Override
