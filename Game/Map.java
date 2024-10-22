@@ -76,7 +76,7 @@ public class Map extends JPanel {
         entities.add(zombie);
     }
 
-    public void removeEntity(int i) {
+    public void removeEntity(Entity i) {
         entities.remove(i);
     }
 

@@ -6,8 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
+import java.awt.*;
 
-public class Tick implements ActionListener{
+public class Tick extends JPanel implements ActionListener{
     Timer timer = new Timer(34, this);
     Map map;
     ArrayList<Entity> entities;
@@ -44,7 +45,15 @@ public class Tick implements ActionListener{
                 for (Entity j : entities) {
                     if (j instanceof Zombie) {
                         Zombie zombie = (Zombie) j;
-                        System.out.println(zombie.isCollidingWith(bullet));
+                        if(zombie.isCollidingWith(bullet)){
+                            entities.remove(zombie);
+                            entities.remove(bullet);
+                            repaint();
+                                
+                        }
+                        
+                        // entities.remove(bullet);
+
                         // if (zombie.isCollidingWith(bullet)) {
                         //     zombie.isCollidingWith(bullet)
                         //     entities.remove(zombie);
