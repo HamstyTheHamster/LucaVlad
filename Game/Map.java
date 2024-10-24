@@ -36,6 +36,7 @@ public class Map extends JPanel {
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.png")).getImage();
+
     
         zombies = new ArrayList<Zombie>();
         bullets = new ArrayList<Bullet>();
