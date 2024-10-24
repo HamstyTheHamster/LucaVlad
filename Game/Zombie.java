@@ -10,7 +10,7 @@ public class Zombie extends Entity{
         if (bullet.getX() >= this.x &&
             bullet.getX() <= this.x + 36 &&
             bullet.getY() >= this.y &&
-            bullet.getY() <= this.y) {
+            bullet.getY() <= this.y + 36) {
             return true;
         }
         return false;
