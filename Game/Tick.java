@@ -19,6 +19,7 @@ public class Tick implements ActionListener {
     int cnt;
     int score;
     private boolean gameLost = false; 
+    int rate = 65;
 
     /**
      * Constructor takes the map, and lists of zombies and bullets.
@@ -61,8 +62,10 @@ public class Tick implements ActionListener {
         
         if (checkGameLoss()) {
             gameLost = true; 
-            JOptionPane.showMessageDialog(map, "You lose! \n" + "SCORE: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
-            tickClean(); 
+            JOptionPane.showMessageDialog(map, "You lose! \n" + "SCORE: " +
+             score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            tickClean();
+            map.window.dispose();
         }
     }
 
@@ -105,21 +108,25 @@ public class Tick implements ActionListener {
     }
 
     public void spawner() {
-        if (cnt % 65 == 0) {
+        if (cnt % rate == 0) {
             int randomX = random.nextInt(map.screenWidth - map.tileSize);  
             int startY = -map.tileSize;  
             Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
             map.add(newZombie);   
-            if (cnt % 325 == 0 && cnt > 0){
+            if (cnt % (rate * 5) == 0 && cnt > 25){
                 Zombie newZombie2 = new Zombie(randomX, startY + map.tileSize, map.tileSize);
                 map.add(newZombie2);
                 zombies.add(newZombie2);
 
-                Zombie newZombie3 = new Zombie(randomX, startY + 2*(map.tileSize), map.tileSize);
+                Zombie newZombie3 = new Zombie(randomX, startY + 2 * (map.tileSize), map.tileSize);
                 map.add(newZombie3);
                 zombies.add(newZombie3);
             }      
             zombies.add(newZombie);
+            
+            if (cnt % (rate * 10) == 0 && rate > 30) {
+                rate = rate - 10;
+             }
         }
         cnt++;
     }
@@ -130,7 +137,7 @@ public class Tick implements ActionListener {
 
     public boolean lose(Zombie a) {
 
-        if (a.getY() > map.screenHeight * 2 / 3) {
+        if (a.getY() > map.screenHeight * 2 / 3 - map.tileSize / 2) {
             return true;
         }
         return false;

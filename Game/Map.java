@@ -27,9 +27,10 @@ public class Map extends JPanel {
     ArrayList<Bullet> bullets;
     Graphics2D g2d;
     int score;
+    JFrame window;
 
-    public Map() { // constructor
-        
+    public Map(JFrame w) { // constructor
+        window = w;
         player = new Player(screenWidth, screenHeight, tileSize, this);         //create player
         //shoot = new Shoot(this);
         wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
