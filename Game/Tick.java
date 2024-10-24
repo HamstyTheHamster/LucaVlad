@@ -7,13 +7,22 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
+
+/*
+ * manages game evens 
+ */
 public class Tick implements ActionListener{
     Timer timer = new Timer(34, this);
     Map map;
-    ArrayList<Entity> entities;
+    ArrayList<Zombie> zombies;
     
-    public Tick(Map a, ArrayList<Entity> b) {
-        entities = b;
+    ArrayList<Bullet> bullets;
+    /**
+     * constructor takes the map in which to manage the zombies and bullets as well as their lists.
+     */
+    public Tick(Map a, ArrayList<Zombie> z, ArrayList<Bullet> b) {
+        zombies = z;
+        bullets = b;
         map = a;
         timer.start();
     }
@@ -27,21 +36,34 @@ public class Tick implements ActionListener{
         System.out.println("Button was clicked!");
         
             
-        for (Entity i : entities) {
+        for (Zombie i : zombies) {
             i.step();
             i.repaint();
             System.out.println();       
         }
+
+        for (Bullet i : bullets) {
+            i.step();
+            i.repaint();
+            System.out.println();       
+        }
+        
         this.checkCollisions();
         
     }
 
 
     private void checkCollisions(){
-        for(Bullet i : entities) {
-            
-        }
+        for (Bullet i : bullets) {
 
+            for (Zombie j: zombies) {
+                if (j.isCollidingWith(i)) {
+                    
+                }
+
+            }
+
+        }
 
     }
     // private void checkCollisions() {

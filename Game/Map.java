@@ -23,7 +23,8 @@ public class Map extends JPanel {
     Wall wall3;
     Image img;
     Tick tick; //what happens every tick
-    ArrayList<Entity> entities;
+    ArrayList<Zombie> zombies;
+    ArrayList<Bullet> bullets;
 
     //test
     Zombie zombie;
@@ -36,8 +37,10 @@ public class Map extends JPanel {
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.png")).getImage();
-        entities = new ArrayList<Entity>();
-        tick = new Tick(this, entities);
+    
+        zombies = new ArrayList<Zombie>();
+        bullets = new ArrayList<Bullet>();
+        tick = new Tick(this, zombies, bullets);
         
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -58,14 +61,14 @@ public class Map extends JPanel {
         //test
         zombie = new Zombie(60, 60, tileSize);
         this.add(zombie);
-        entities.add(zombie);
+        zombies.add(zombie);
     }
 
     public void addBullet(){
         Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
         this.add(bullet);
         System.out.println("shooting");
-        entities.add(bullet);
+        bullets.add(bullet);
     }
 
 
@@ -73,11 +76,15 @@ public class Map extends JPanel {
         Zombie zombie = new Zombie(x, y, tileSize);
         this.add(zombie);
         System.out.println("zombie");
-        entities.add(zombie);
+        zombies.add(zombie);
     }
 
-    public void removeEntity(int i) {
-        entities.remove(i);
+    public void removeZombie(Zombie i) {
+        zombies.remove(i);
+    }
+
+    public void removeBullet(Bullet i) {
+        bullets.remove(i);
     }
 
     public void tickClean(){

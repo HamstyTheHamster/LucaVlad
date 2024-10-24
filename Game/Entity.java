@@ -22,7 +22,15 @@ class Entity extends JPanel {
         this.setPreferredSize(new Dimension(size, size));
         this.setBounds(x, y, size, size);
     }
-    
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+     
     @Override
     protected void paintComponent(Graphics g) { //to draw pic
         super.paintComponent(g);  
