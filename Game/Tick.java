@@ -85,12 +85,12 @@ public class Tick implements ActionListener {
     }
 
     public void spawner() {
-        if(cnt % 65 == 0) {
+        if (cnt % 65 == 0) {
             int randomX = random.nextInt(map.screenWidth - map.tileSize);  
             int startY = -map.tileSize;  
             Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
             map.add(newZombie);   
-            if(cnt % 325 == 0 && cnt > 0){
+            if (cnt % 325 == 0 && cnt > 0){
                 Zombie newZombie2 = new Zombie(randomX, startY + map.tileSize, map.tileSize);
                 map.add(newZombie2);
                 zombies.add(newZombie2);
@@ -109,10 +109,10 @@ public class Tick implements ActionListener {
     }
 
     public boolean lose(Zombie a) {
-        if(a.getY() > map.screenHeight * 2 / 3) {
+        if (a.getY() > map.screenHeight * 2 / 3) {
             return true;
         }
-            return false;
+        return false;
     }
 
 }
