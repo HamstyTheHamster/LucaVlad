@@ -9,7 +9,7 @@ import javax.swing.Timer;
  * Manages game events
  */
 public class Tick implements ActionListener {
-    Timer timer = new Timer(31, this); // Timer to trigger updates every 34ms
+    Timer timer = new Timer(31, this); // Timer to trigger updates every 31ms
     Map map;
     ArrayList<Zombie> zombies;
     ArrayList<Bullet> bullets;
@@ -24,12 +24,15 @@ public class Tick implements ActionListener {
         timer.start();  // Start the timer
     }
 
-    public void tickClean(){
+    public void tickClean() {
         timer.stop();  // Stop the timer
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        // Check for collisions first, so that zombies are removed immediately
+        this.checkCollisions();
+
         // Update all zombies and bullets
         for (Zombie i : zombies) {
             i.step();
@@ -40,8 +43,6 @@ public class Tick implements ActionListener {
             i.step();
             i.repaint();
         }
-
-        this.checkCollisions(); // Check for collisions between bullets and zombies
     }
 
     // Method to check and handle collisions between bullets and zombies
@@ -55,23 +56,19 @@ public class Tick implements ActionListener {
                 if (zombie.isCollidingWith(bullet)) {
                     bulletsToRemove.add(bullet);
                     zombiesToRemove.add(zombie);
+                    // Remove from map immediately to avoid further movement
+                    map.remove(bullet);
+                    map.remove(zombie);
                 }
             }
         }
 
-        // Remove collided bullets and zombies
+        // Remove collided bullets and zombies from the list
         bullets.removeAll(bulletsToRemove);
         zombies.removeAll(zombiesToRemove);
 
-        // Remove objects from the map and refresh the display
-        for (Bullet bullet : bulletsToRemove) {
-            map.remove(bullet);
-        }
-        for (Zombie zombie : zombiesToRemove) {
-            map.remove(zombie);
-        }
-
+        // Refresh the display after removal
         map.revalidate();
-        map.repaint();  // Ensure the map is updated after removing objects
+        map.repaint();
     }
 }
