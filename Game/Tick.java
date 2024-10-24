@@ -1,88 +1,77 @@
 package Game;
 
-//event manager for game logic
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.*;
-
+import javax.swing.Timer;
 
 /*
- * manages game evens 
+ * Manages game events
  */
-public class Tick implements ActionListener{
-    Timer timer = new Timer(34, this);
+public class Tick implements ActionListener {
+    Timer timer = new Timer(34, this); // Timer to trigger updates every 34ms
     Map map;
     ArrayList<Zombie> zombies;
-    
     ArrayList<Bullet> bullets;
+
     /**
-     * constructor takes the map in which to manage the zombies and bullets as well as their lists.
+     * Constructor takes the map, and lists of zombies and bullets.
      */
     public Tick(Map a, ArrayList<Zombie> z, ArrayList<Bullet> b) {
         zombies = z;
         bullets = b;
         map = a;
-        timer.start();
+        timer.start();  // Start the timer
     }
 
     public void tickClean(){
-        timer.stop();
+        timer.stop();  // Stop the timer
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Button was clicked!");
-        
-            
+        // Update all zombies and bullets
         for (Zombie i : zombies) {
             i.step();
             i.repaint();
-            System.out.println();       
         }
 
         for (Bullet i : bullets) {
             i.step();
             i.repaint();
-            System.out.println();       
         }
-        
-        this.checkCollisions();
-        
+
+        this.checkCollisions(); // Check for collisions between bullets and zombies
     }
 
+    // Method to check and handle collisions between bullets and zombies
+    private void checkCollisions() {
+        ArrayList<Bullet> bulletsToRemove = new ArrayList<>();
+        ArrayList<Zombie> zombiesToRemove = new ArrayList<>();
 
-    private void checkCollisions(){
-        for (Bullet i : bullets) {
-
-            for (Zombie j: zombies) {
-                if (j.isCollidingWith(i)) {
-                    bullets.remove(i);
-                    zombies.remove(j);
-                    map.remove(i);
-                    map.remove(j);
-                    map.revalidate();
+        // Iterate through bullets and zombies to check for collisions
+        for (Bullet bullet : bullets) {
+            for (Zombie zombie : zombies) {
+                if (zombie.isCollidingWith(bullet)) {
+                    bulletsToRemove.add(bullet);
+                    zombiesToRemove.add(zombie);
                 }
-
             }
-
         }
 
-    }
-    // private void checkCollisions() {
-    //     for (int i = 0; i < player.getBullets().size(); i++) {
-    //         Bullet bullet = player.getBullets().get(i);
-    //         for (int j = 0; j < zombies.size(); j++) {
-    //             Zombie zombie = zombies.get(j);
-    //             if (bullet.isCollidingWith(zombie)) {
-    //                 zombies.remove(j);
-    //                 player.getBullets().remove(i);
-    //                 i--; 
-    //                 break; 
-    //             }
-    //         }
-    //     }
-    // }
-}
+        // Remove collided bullets and zombies
+        bullets.removeAll(bulletsToRemove);
+        zombies.removeAll(zombiesToRemove);
 
+        // Remove objects from the map and refresh the display
+        for (Bullet bullet : bulletsToRemove) {
+            map.remove(bullet);
+        }
+        for (Zombie zombie : zombiesToRemove) {
+            map.remove(zombie);
+        }
+
+        map.revalidate();
+        map.repaint();  // Ensure the map is updated after removing objects
+    }
+}
