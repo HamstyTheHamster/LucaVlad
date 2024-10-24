@@ -87,7 +87,7 @@ public class Tick implements ActionListener {
     
             Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
             map.add(newZombie);         
-            zombies.add(newZombie);     
+            zombies.add(newZombie);
         }
         cnt++;
     }
