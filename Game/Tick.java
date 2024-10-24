@@ -61,7 +61,7 @@ public class Tick implements ActionListener {
         
         if (checkGameLoss()) {
             gameLost = true; 
-            JOptionPane.showMessageDialog(map, "You lose!", "Game Over", JOptionPane.INFORMATION_MESSAGE); // Afișează mesajul
+            JOptionPane.showMessageDialog(map, "You lose! \n" + "SCORE: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
             tickClean(); 
         }
     }
