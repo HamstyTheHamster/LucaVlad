@@ -12,6 +12,7 @@ class Entity extends JPanel {
     Image img;
     int tSize;
     int size;
+    
     public Entity(int startx, int starty, int tileSize, int stepSize, String poza, int sizeL) {
         x = startx;
         y = starty;
@@ -21,14 +22,6 @@ class Entity extends JPanel {
         img = new ImageIcon(getClass().getResource(poza)).getImage();
         this.setPreferredSize(new Dimension(size, size));
         this.setBounds(x, y, size, size);
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
      
     @Override

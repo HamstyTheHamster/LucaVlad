@@ -87,7 +87,7 @@ public class Map extends JPanel {
         bullets.remove(i);
     }
 
-    public void tickClean(){
+    public void tickClean() {
         tick.tickClean();
     }
     

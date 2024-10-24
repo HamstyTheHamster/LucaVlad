@@ -6,17 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
-import java.awt.*;
 
-<<<<<<< HEAD
 
 /*
  * manages game evens 
  */
 public class Tick implements ActionListener{
-=======
-public class Tick extends JPanel implements ActionListener{
->>>>>>> d60a4bf2cb67e8804ce5f21d541d90844a442cc6
     Timer timer = new Timer(34, this);
     Map map;
     ArrayList<Zombie> zombies;
@@ -58,7 +53,6 @@ public class Tick extends JPanel implements ActionListener{
     }
 
 
-<<<<<<< HEAD
     private void checkCollisions(){
         for (Bullet i : bullets) {
 
@@ -71,37 +65,7 @@ public class Tick extends JPanel implements ActionListener{
 
         }
 
-=======
-    private void checkCollisions() {
-        for (Entity i : entities) {
-            if (i instanceof Bullet) {
-                Bullet bullet = (Bullet) i;
-                for (Entity j : entities) {
-                    if (j instanceof Zombie) {
-                        Zombie zombie = (Zombie) j;
-                        if(zombie.isCollidingWith(bullet)){
-                            entities.remove(zombie);
-                            entities.remove(bullet);
-                            repaint();
-                                
-                        }
-                        
-                        // entities.remove(bullet);
-
-                        // if (zombie.isCollidingWith(bullet)) {
-                        //     zombie.isCollidingWith(bullet)
-                        //     entities.remove(zombie);
-                        //     entities.remove(bullet);
-                        //     // It's a good idea to break out of the loop after removing the bullet
-                        //     break;
-                        // }
-                    }
-                }
-            }
-        }
->>>>>>> d60a4bf2cb67e8804ce5f21d541d90844a442cc6
     }
-    
     // private void checkCollisions() {
     //     for (int i = 0; i < player.getBullets().size(); i++) {
     //         Bullet bullet = player.getBullets().get(i);
