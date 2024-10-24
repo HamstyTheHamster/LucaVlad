@@ -9,7 +9,7 @@ import javax.swing.Timer;
  * Manages game events
  */
 public class Tick implements ActionListener {
-    Timer timer = new Timer(34, this); // Timer to trigger updates every 34ms
+    Timer timer = new Timer(30, this); // Timer to trigger updates every 34ms
     Map map;
     ArrayList<Zombie> zombies;
     ArrayList<Bullet> bullets;
