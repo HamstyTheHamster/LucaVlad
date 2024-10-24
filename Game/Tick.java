@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
+import javax.swing.JOptionPane; 
 import java.util.Random;
 
 /*
@@ -17,6 +18,7 @@ public class Tick implements ActionListener {
     Random random;
     int cnt;
     int score;
+    private boolean gameLost = false; 
 
     /**
      * Constructor takes the map, and lists of zombies and bullets.
@@ -37,9 +39,14 @@ public class Tick implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Check for collisions first, so that zombies are removed immediately
-        this.checkCollisions();
-        this.spawner();
+        if (gameLost) {
+            return; 
+        }
+
+        
+        checkCollisions();
+        spawner();
+
         // Update all zombies and bullets
         for (Zombie i : zombies) {
             i.step();
@@ -50,6 +57,23 @@ public class Tick implements ActionListener {
             i.step();
             i.repaint();
         }
+
+        
+        if (checkGameLoss()) {
+            gameLost = true; 
+            JOptionPane.showMessageDialog(map, "You lose! \n" + "SCORE: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            tickClean(); 
+        }
+    }
+
+    
+    private boolean checkGameLoss() {
+        for (Zombie zombie : zombies) {
+            if (lose(zombie)) {
+                return true; 
+            }
+        }
+        return false; 
     }
 
     // Method to check and handle collisions between bullets and zombies
@@ -67,10 +91,6 @@ public class Tick implements ActionListener {
                     map.remove(bullet);
                     map.remove(zombie);
                     score++;
-                }
-
-                if (lose(zombie)) {
-                    zombiesToRemove.add(zombie);
                 }
             }
         }
@@ -109,10 +129,11 @@ public class Tick implements ActionListener {
     }
 
     public boolean lose(Zombie a) {
+
         if (a.getY() > map.screenHeight * 2 / 3) {
             return true;
         }
         return false;
-    }
 
+    }
 }

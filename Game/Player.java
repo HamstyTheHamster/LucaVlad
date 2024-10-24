@@ -80,8 +80,8 @@ public class Player extends JPanel implements KeyListener {
         if (x < 0) { 
             x = 0;
         }
-        if (y < screenHeight - 3 * tileSize){
-            y = screenHeight - 3 * tileSize;
+        if (y < screenHeight - 4 * tileSize + 4){
+            y = screenHeight - 4 * tileSize + 4;
         }
         if (x > screenWidth - this.getWidth()){
             x = screenWidth - this.getWidth();

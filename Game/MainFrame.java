@@ -17,12 +17,13 @@ public class MainFrame {
         window.setTitle("COD ZOMBIES 2D");
         window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         //window.setSize(800,500);
-        window.setLocationRelativeTo(null);
         window.setResizable(false);
 
         Map panel = new Map();
         window.add(panel);
         window.pack();
+        
+        window.setLocationRelativeTo(null);
         
 
 
