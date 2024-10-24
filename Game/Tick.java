@@ -58,7 +58,11 @@ public class Tick implements ActionListener{
 
             for (Zombie j: zombies) {
                 if (j.isCollidingWith(i)) {
-                    
+                    bullets.remove(i);
+                    zombies.remove(j);
+                    map.remove(i);
+                    map.remove(j);
+                    map.revalidate();
                 }
 
             }
