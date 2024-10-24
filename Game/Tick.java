@@ -92,7 +92,7 @@ public class Tick implements ActionListener {
         cnt++;
     }
 
-    public static int getScore() {
+    public int getScore() {
         return score;
     }
 

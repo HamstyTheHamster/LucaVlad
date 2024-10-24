@@ -94,8 +94,8 @@ public class Map extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setFont(new Font("Arial", Font.BOLD, 20));
         g2d.setColor(Color.BLUE);
-        score = Tick.getScore();
-        g2d.drawString("SCORE: " + score, this.getWidth() - 100, 50);
+        score = tick.getScore();
+        g2d.drawString("SCORE: " + score, this.getWidth() - 130, 20);
     }
 
     
