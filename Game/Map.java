@@ -56,6 +56,7 @@ public class Map extends JPanel {
         //this.add(wall3);
         this.add(player);
         this.addKeyListener(player);
+        addBullet();
 
     }
 

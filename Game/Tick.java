@@ -68,6 +68,10 @@ public class Tick implements ActionListener {
                     map.remove(zombie);
                     score++;
                 }
+
+                if (lose(zombie)) {
+                    zombiesToRemove.add(zombie);
+                }
             }
         }
 
@@ -102,6 +106,13 @@ public class Tick implements ActionListener {
 
     public int getScore() {
         return score;
+    }
+
+    public boolean lose(Zombie a) {
+        if(a.getY() > map.screenHeight * 2 / 3) {
+            return true;
+        }
+            return false;
     }
 
 }
