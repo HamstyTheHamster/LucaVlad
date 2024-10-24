@@ -1,5 +1,7 @@
 package Game;
 
+//map on which we add all elements
+
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -21,7 +23,10 @@ public class Map extends JPanel {
     Wall wall3;
     Image img;
     Tick tick; //what happens every tick
-    ArrayList<Entity> entities;
+    ArrayList<Zombie> zombies;
+    ArrayList<Bullet> bullets;
+    Graphics2D g2d;
+    int score;
 
     public Map() { // constructor
         
@@ -30,12 +35,12 @@ public class Map extends JPanel {
         wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
         wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
         wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
-        img = new ImageIcon(getClass().getResource("Map.jpg")).getImage();
-        tick = new Tick(this, entities);
-        entities = new ArrayList<Entity>();
-
-
-
+        img = new ImageIcon(getClass().getResource("Map.png")).getImage();
+    
+        zombies = new ArrayList<Zombie>();
+        bullets = new ArrayList<Bullet>();
+        tick = new Tick(this, zombies, bullets);
+        
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
@@ -46,21 +51,20 @@ public class Map extends JPanel {
         this.requestFocusInWindow();
         
         // Add elements to the panel
-        this.add(wall1);
-        this.add(wall2);
-        this.add(wall3);
+        //this.add(wall1);
+        //this.add(wall2);
+        //this.add(wall3);
         this.add(player);
         this.addKeyListener(player);
+        addBullet();
 
-        this.add(new Zombie(6, 6, tileSize));
-        
     }
 
     public void addBullet(){
-        Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
+        Bullet bullet = new Bullet(player.getX() + tileSize/2, player.getY() + tileSize/2, tileSize);
         this.add(bullet);
         System.out.println("shooting");
-        entities.add(bullet);
+        bullets.add(bullet);
     }
 
 
@@ -68,17 +72,32 @@ public class Map extends JPanel {
         Zombie zombie = new Zombie(x, y, tileSize);
         this.add(zombie);
         System.out.println("zombie");
-        entities.add(zombie);
+        zombies.add(zombie);
     }
 
-    public void removeEntity(int i) {
-        entities.remove(i);
+    public void removeZombie(Zombie i) {
+        zombies.remove(i);
+    }
+
+    public void removeBullet(Bullet i) {
+        bullets.remove(i);
+    }
+
+    public void tickClean() {
+        tick.tickClean();
     }
     
     @Override
         protected void paintComponent(Graphics g) {
         super.paintComponent(g);  
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setFont(new Font("Arial", Font.BOLD, 20));
+        g2d.setColor(Color.BLUE);
+        score = tick.getScore();
+        g2d.drawString("SCORE: " + score, this.getWidth() - 130, 20);
     }
 
+    
 }
