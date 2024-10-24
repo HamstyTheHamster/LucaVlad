@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.Timer;
+import java.util.Random;
 
 /*
  * Manages game events
@@ -13,6 +14,8 @@ public class Tick implements ActionListener {
     Map map;
     ArrayList<Zombie> zombies;
     ArrayList<Bullet> bullets;
+    Random random;
+    int cnt;
 
     /**
      * Constructor takes the map, and lists of zombies and bullets.
@@ -21,6 +24,8 @@ public class Tick implements ActionListener {
         zombies = z;
         bullets = b;
         map = a;
+        cnt = 0;
+        random = new Random();
         timer.start();  // Start the timer
     }
 
@@ -32,7 +37,7 @@ public class Tick implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Check for collisions first, so that zombies are removed immediately
         this.checkCollisions();
-
+        this.spawner();
         // Update all zombies and bullets
         for (Zombie i : zombies) {
             i.step();
@@ -71,4 +76,17 @@ public class Tick implements ActionListener {
         map.revalidate();
         map.repaint();
     }
+
+    public void spawner() {
+        if(cnt % 65 == 0) {
+        int randomX = random.nextInt(map.screenWidth - map.tileSize);  
+        int startY = -map.tileSize;  
+    
+        Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
+        map.add(newZombie);         
+        zombies.add(newZombie);     
+        }
+        cnt++;
+    }
+
 }
