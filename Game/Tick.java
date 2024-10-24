@@ -16,6 +16,7 @@ public class Tick implements ActionListener {
     ArrayList<Bullet> bullets;
     Random random;
     int cnt;
+    int score;
 
     /**
      * Constructor takes the map, and lists of zombies and bullets.
@@ -25,6 +26,7 @@ public class Tick implements ActionListener {
         bullets = b;
         map = a;
         cnt = 0;
+        score = 0;
         random = new Random();
         timer.start();  // Start the timer
     }
@@ -64,6 +66,7 @@ public class Tick implements ActionListener {
                     // Remove from map immediately to avoid further movement
                     map.remove(bullet);
                     map.remove(zombie);
+                    score++;
                 }
             }
         }
@@ -79,14 +82,18 @@ public class Tick implements ActionListener {
 
     public void spawner() {
         if(cnt % 65 == 0) {
-        int randomX = random.nextInt(map.screenWidth - map.tileSize);  
-        int startY = -map.tileSize;  
+            int randomX = random.nextInt(map.screenWidth - map.tileSize);  
+            int startY = -map.tileSize;  
     
-        Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
-        map.add(newZombie);         
-        zombies.add(newZombie);     
+            Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
+            map.add(newZombie);         
+            zombies.add(newZombie);     
         }
         cnt++;
+    }
+
+    public static int getScore() {
+        return score;
     }
 
 }
