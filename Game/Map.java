@@ -26,9 +26,6 @@ public class Map extends JPanel {
     ArrayList<Zombie> zombies;
     ArrayList<Bullet> bullets;
 
-    //test
-    Zombie zombie;
-
     public Map() { // constructor
         
         player = new Player(screenWidth, screenHeight, tileSize, this);         //create player
@@ -52,20 +49,16 @@ public class Map extends JPanel {
         this.requestFocusInWindow();
         
         // Add elements to the panel
-        this.add(wall1);
-        this.add(wall2);
-        this.add(wall3);
+        //this.add(wall1);
+        //this.add(wall2);
+        //this.add(wall3);
         this.add(player);
         this.addKeyListener(player);
 
-        //test
-        zombie = new Zombie(60, 60, tileSize);
-        this.add(zombie);
-        zombies.add(zombie);
     }
 
     public void addBullet(){
-        Bullet bullet = new Bullet(player.getX(), player.getY(), tileSize);
+        Bullet bullet = new Bullet(player.getX() + tileSize/2, player.getY() + tileSize/2, tileSize);
         this.add(bullet);
         System.out.println("shooting");
         bullets.add(bullet);
