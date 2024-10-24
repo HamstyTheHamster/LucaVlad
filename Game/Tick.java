@@ -84,7 +84,6 @@ public class Tick implements ActionListener {
         if(cnt % 65 == 0) {
             int randomX = random.nextInt(map.screenWidth - map.tileSize);  
             int startY = -map.tileSize;  
-    
             Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
             map.add(newZombie);         
             zombies.add(newZombie);
