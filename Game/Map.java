@@ -25,6 +25,7 @@ public class Map extends JPanel {
     Tick tick; //what happens every tick
     ArrayList<Zombie> zombies;
     ArrayList<Bullet> bullets;
+    Graphics2D g2d; 
 
     public Map() { // constructor
         
@@ -88,6 +89,13 @@ public class Map extends JPanel {
         protected void paintComponent(Graphics g) {
         super.paintComponent(g);  
         g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+        g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        g2d.setFont(new Font("Arial", Font.BOLD, 20));
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("Hello, No Background!", this.getWidth() - 100, 50);
     }
 
+    
 }
