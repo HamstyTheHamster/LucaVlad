@@ -3,6 +3,8 @@ package Game;
 //map on which we add all elements
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -27,9 +29,10 @@ public class Map extends JPanel {
     ArrayList<Bullet> bullets;
     Graphics2D g2d;
     int score;
+    JFrame window;
 
-    public Map() { // constructor
-        
+    public Map(JFrame w, String highscore) throws URISyntaxException, IOException { // constructor
+        window = w;
         player = new Player(screenWidth, screenHeight, tileSize, this);         //create player
         //shoot = new Shoot(this);
         wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
@@ -40,7 +43,7 @@ public class Map extends JPanel {
     
         zombies = new ArrayList<Zombie>();
         bullets = new ArrayList<Bullet>();
-        tick = new Tick(this, zombies, bullets);
+        tick = new Tick(this, zombies, bullets, highscore);
         
         // Set up panel properties
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));

@@ -3,6 +3,9 @@ package Game;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javax.swing.JFrame;
 
 
@@ -11,7 +14,7 @@ public class MainFrame {
 
     private JFrame window;
 
-    public MainFrame() {
+    public MainFrame(String score) throws URISyntaxException, IOException {
 
         window = new JFrame();
         window.setTitle("COD ZOMBIES 2D");
@@ -19,7 +22,7 @@ public class MainFrame {
         //window.setSize(800,500);
         window.setResizable(false);
 
-        Map panel = new Map();
+        Map panel = new Map(window, score);
         window.add(panel);
         window.pack();
         
