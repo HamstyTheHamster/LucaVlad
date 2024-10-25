@@ -2,7 +2,6 @@ package Game;
 
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
-
 import javax.swing.JFrame;
 
 public class Run {
