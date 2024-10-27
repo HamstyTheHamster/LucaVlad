@@ -8,7 +8,9 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import javax.swing.*;
 
-
+/**
+ * Game map in which I add my elements.
+ */
 public class Map extends JPanel {
     final int originalTileSize = 16;
     final int scale = 3;
@@ -20,9 +22,6 @@ public class Map extends JPanel {
 
     Player player;
     //Shoot shoot;
-    Wall wall1;
-    Wall wall2;
-    Wall wall3;
     Image img;
     Tick tick; //what happens every tick
     ArrayList<Zombie> zombies;
@@ -31,13 +30,20 @@ public class Map extends JPanel {
     int score;
     JFrame window;
 
+    /**
+     * Construct map.
+     * @param w
+     *      pass the frame to close it later
+     * @param highscore
+     *      pass highscore to compare with current score
+     * @throws URISyntaxException
+     *      never happens
+     * @throws IOException
+     *      never happens
+     */
     public Map(JFrame w, String highscore) throws URISyntaxException, IOException { // constructor
         window = w;
         player = new Player(screenWidth, screenHeight, tileSize, this);         //create player
-        //shoot = new Shoot(this);
-        wall1 = new Wall(174, screenWidth, screenHeight, tileSize);
-        wall2 = new Wall(372, screenWidth, screenHeight, tileSize);
-        wall3 = new Wall(570, screenWidth, screenHeight, tileSize);
         img = new ImageIcon(getClass().getResource("Map.png")).getImage();
 
     
@@ -54,24 +60,30 @@ public class Map extends JPanel {
         this.setFocusable(true);
         this.requestFocusInWindow();
         
-        // Add elements to the panel
-        //this.add(wall1);
-        //this.add(wall2);
-        //this.add(wall3);
         this.add(player);
         this.addKeyListener(player);
         addBullet();
 
     }
 
-    public void addBullet(){
-        Bullet bullet = new Bullet(player.getX() + tileSize/2, player.getY() + tileSize/2, tileSize);
+    /**
+     * add bullet to map on the player.
+     */
+    public void addBullet() {
+        Bullet bullet = new Bullet(player.getX() + tileSize / 2,
+             player.getY() + tileSize / 2, tileSize);
         this.add(bullet);
         System.out.println("shooting");
         bullets.add(bullet);
     }
 
-
+    /**
+     * add zombie to specified coord.
+     * @param x
+     *      spawn x
+     * @param y
+     *      spawn y
+     */
     public void addZombie(int x, int y) {
         Zombie zombie = new Zombie(x, y, tileSize);
         this.add(zombie);

@@ -5,15 +5,25 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URISyntaxException;
-
 import javax.swing.JFrame;
 
 
-
+/**
+ * frame for game.
+ */
 public class MainFrame {
 
     private JFrame window;
 
+    /**
+     * Constructor for the frame.
+     * @param score
+     *      pass High score from menu
+     * @throws URISyntaxException
+     *      never happens
+     * @throws IOException
+     *      never happens
+     */
     public MainFrame(String score) throws URISyntaxException, IOException {
 
         window = new JFrame();
@@ -38,13 +48,15 @@ public class MainFrame {
 
                 // Close the JFrame after handling the other object
                 window.dispose();
-        }
+            }
         });
     }
 
     
 
-
+    /**
+     * to make the window visible.
+     */
     public void show() {
 
         window.setVisible(true);
