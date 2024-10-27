@@ -13,6 +13,21 @@ class Entity extends JPanel {
     int tSize;
     int size;
     
+    /**
+     * Creates entity on point.
+     * @param startx
+     *      spawn x
+     * @param starty
+     *      spawn y
+     * @param tileSize
+     *      scale
+     * @param stepSize
+     *      speed
+     * @param poza
+     *      picture
+     * @param sizeL
+     *      length size
+     */
     public Entity(int startx, int starty, int tileSize, int stepSize, String poza, int sizeL) {
         x = startx;
         y = starty;
@@ -31,8 +46,10 @@ class Entity extends JPanel {
     }
 
 
-
-    public void step() { //how to step
+    /**
+     * Call to step.
+     */
+    public void step() {
         y = y + step;
         this.setBounds(x, y, size, size);
     }

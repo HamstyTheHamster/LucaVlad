@@ -4,11 +4,20 @@ import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import javax.swing.JFrame;
 
+/**
+ * Class that starts program.
+ */
 public class Run {
     JFrame window = new JFrame();
 
-
-    public Run() throws FileNotFoundException, URISyntaxException{
+    /**
+     * Creates program.
+     * @throws FileNotFoundException
+     *      never happens
+     * @throws URISyntaxException
+     *      never happens
+     */
+    public Run() throws FileNotFoundException, URISyntaxException {
         window.setTitle("COD ZOMBIES 2D");
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //window.setSize(800,500);

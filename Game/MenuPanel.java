@@ -13,8 +13,10 @@ import java.net.URL;
 import java.util.Scanner;
 import javax.swing.*;
 
-
-public class MenuPanel extends JPanel{
+/**
+ * Panel for main menu.
+ */
+public class MenuPanel extends JPanel {
     URL url;
     URI uri;
     File file;
@@ -25,7 +27,16 @@ public class MenuPanel extends JPanel{
     String score;
     JFrame frame;
 
-    public MenuPanel(JFrame a) throws FileNotFoundException, URISyntaxException{
+    /**
+     * Generates the menu.
+     * @param a
+     *      adress to frame so it can close it
+     * @throws FileNotFoundException
+     *      never happens
+     * @throws URISyntaxException
+     *      never happens
+     */
+    public MenuPanel(JFrame a) throws FileNotFoundException, URISyntaxException {
         url = MenuPanel.class.getResource("highscore.txt");
         uri = url.toURI();
         file = new File(uri);
@@ -74,6 +85,7 @@ public class MenuPanel extends JPanel{
         this.add(button);
         
     }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);  
