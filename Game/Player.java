@@ -10,9 +10,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.*;
 
-/**
- * Player who listens to keyboard to move and shoot.
- */
 public class Player extends JPanel implements KeyListener {
 
     private int x;        // pozitie initiala
@@ -23,17 +20,6 @@ public class Player extends JPanel implements KeyListener {
     private Map map;
     private Image img;
 
-    /**
-     * Scalable player constructor who can shoot in map.
-     * @param a
-     *      scr width
-     * @param b
-     *      scr height
-     * @param c
-     *      tile size for scale
-     * @param m
-     *      map adress in which it was called to spawn bullets
-     */
     public Player(int a, int b, int c, Map m) {
         screenWidth = a;
         screenHeight = b;
@@ -70,8 +56,7 @@ public class Player extends JPanel implements KeyListener {
     
     @Override
     public void keyPressed(KeyEvent e) {
-        
-        switch (e.getKeyCode()) {  
+        switch (e.getKeyCode()) {   //player movement and shooting
             
             case KeyEvent.VK_W:
                 y -= 10;  // sus
@@ -90,17 +75,15 @@ public class Player extends JPanel implements KeyListener {
                 //shooting
                 map.addBullet();
                 break;
-            default:
-                break;
         }
 
         if (x < 0) { 
             x = 0;
         }
-        if (y < screenHeight - 4 * tileSize + 4) {
+        if (y < screenHeight - 4 * tileSize + 4){
             y = screenHeight - 4 * tileSize + 4;
         }
-        if (x > screenWidth - this.getWidth()) {
+        if (x > screenWidth - this.getWidth()){
             x = screenWidth - this.getWidth();
         }
         if (y > screenHeight - this.getHeight()) {

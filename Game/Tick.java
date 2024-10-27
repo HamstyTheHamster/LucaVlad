@@ -2,19 +2,21 @@ package Game;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Random;
-import javax.swing.JOptionPane; 
 import javax.swing.Timer;
+import javax.swing.JOptionPane; 
+import java.util.Random;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 
-/**
- * Tickrate manager.
+/*
+ * Manages game events
  */
 public class Tick implements ActionListener {
     Timer timer = new Timer(31, this); // Timer to trigger updates every 31ms
@@ -45,8 +47,16 @@ public class Tick implements ActionListener {
         url = MenuPanel.class.getResource("highscore.txt");
         uri = url.toURI();
         file = new File(uri);
+        // Scanner scanner = new Scanner(file);
+        // scanner.reset();
+        // scanner.close();
+        // scanner = new Scanner(file);
         writer = new FileWriter(file);
         this.highscore = highscore;
+        // if (scanner.hasNext()) {
+        //     highscore = scanner.next();
+        //     scanner.close();
+        // }
         System.out.println(highscore);
         zombies = z;
         bullets = b;
@@ -85,8 +95,8 @@ public class Tick implements ActionListener {
         
         if (checkGameLoss()) {
             gameLost = true; 
-            JOptionPane.showMessageDialog(map, "You lose! \n" + "SCORE: "
-                + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(map, "You lose! \n" + "SCORE: " +
+                score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
             tickClean();
             map.window.dispose();
             fileContent = "" + score;
@@ -158,7 +168,7 @@ public class Tick implements ActionListener {
             int startY = -map.tileSize;  
             Zombie newZombie = new Zombie(randomX, startY, map.tileSize);
             map.add(newZombie);   
-            if (cnt % (rate * 5) == 0 && cnt > 25) {
+            if (cnt % (rate * 5) == 0 && cnt > 25){
                 Zombie newZombie2 = new Zombie(randomX, startY + map.tileSize, map.tileSize);
                 map.add(newZombie2);
                 zombies.add(newZombie2);
@@ -171,7 +181,7 @@ public class Tick implements ActionListener {
             
             if (cnt % (rate * 10) == 0 && rate > 30) {
                 rate = rate - 10;
-            }
+             }
         }
         cnt++;
     }
@@ -180,14 +190,6 @@ public class Tick implements ActionListener {
         return score;
     }
 
-    /**
-     * Determine if the zombie has gone far enough for you to lose.
-     * @param a
-     *      the zombie on which to check the loss condition
-     * @return
-     *      true if you lose
-     *      false if you dont
-     */
     public boolean lose(Zombie a) {
 
         if (a.getY() > map.screenHeight * 2 / 3 - map.tileSize / 2) {

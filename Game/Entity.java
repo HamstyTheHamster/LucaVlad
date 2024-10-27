@@ -13,21 +13,6 @@ class Entity extends JPanel {
     int tSize;
     int size;
     
-    /**
-     * Entity on which zombie and bullet are based.
-     * @param startx
-     *      spawn x
-     * @param starty
-     *      spawn y
-     * @param tileSize
-     *      tile for scale
-     * @param stepSize
-     *      step for speed
-     * @param poza
-     *      for picture
-     * @param sizeL
-     *      size length (also width)
-     */
     public Entity(int startx, int starty, int tileSize, int stepSize, String poza, int sizeL) {
         x = startx;
         y = starty;
@@ -47,7 +32,8 @@ class Entity extends JPanel {
 
 
 
-    public void step() {
+    public void step() { //how to step
+        y = y + step;
         this.setBounds(x, y, size, size);
     }
 
