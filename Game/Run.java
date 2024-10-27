@@ -20,7 +20,7 @@ public class Run {
     * @throws URISyntaxException
     *      never happens
     */
-    public Run() throws FileNotFoundException, URISyntaxException{
+    public Run() throws FileNotFoundException, URISyntaxException {
         window.setTitle("COD ZOMBIES 2D");
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //window.setSize(800,500);
